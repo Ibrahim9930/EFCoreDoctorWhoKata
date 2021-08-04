@@ -20,6 +20,26 @@ namespace DoctorWho.Db
             base.OnConfiguring(optionsBuilder);
         }
 
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Enemy>().HasMany(e => e.Episodes).WithMany(e => e.Enemies).UsingEntity(j =>
+            {
+                j.ToTable("EpisodeEnemy");
+                j.Property("EpisodesEpisodeId").HasColumnName("EpisodeId");
+                j.Property("EnemiesEnemyId").HasColumnName("EnemyId");
+                j.Property<Guid>("EpisodeEnemyId");
+                j.HasKey("EpisodeEnemyId");
+            });
 
+            modelBuilder.Entity<Companion>().HasMany(c => c.Episodes).WithMany(e => e.Companions).UsingEntity(j =>
+            {
+                j.ToTable("EpisodeCompanion");
+                j.Property("EpisodesEpisodeId").HasColumnName("EpisodeId");
+                j.Property("CompanionsCompanionId").HasColumnName("CompanionId");
+                j.Property<Guid>("EpisodeCompanionId");
+                j.HasKey("EpisodeCompanionId");
+            });
+            base.OnModelCreating(modelBuilder);
+        }
     }
 }
