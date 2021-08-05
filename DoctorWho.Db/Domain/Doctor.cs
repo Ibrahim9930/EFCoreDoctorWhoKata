@@ -5,7 +5,7 @@ namespace DoctorWho.Db.Domain
 {
     public class Doctor
     {
-        public Guid DoctorId { get; set; }
+        public int DoctorId { get; set; }
         public int DoctorNumber { get; set; }
         public string DoctorName { get; set; }
         public DateTime Birthdate { get; set; }

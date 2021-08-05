@@ -27,7 +27,7 @@ namespace DoctorWho.Db
                 j.ToTable("EpisodeEnemy");
                 j.Property("EpisodesEpisodeId").HasColumnName("EpisodeId");
                 j.Property("EnemiesEnemyId").HasColumnName("EnemyId");
-                j.Property<Guid>("EpisodeEnemyId");
+                j.Property<int>("EpisodeEnemyId");
                 j.HasKey("EpisodeEnemyId");
             });
 
@@ -36,7 +36,7 @@ namespace DoctorWho.Db
                 j.ToTable("EpisodeCompanion");
                 j.Property("EpisodesEpisodeId").HasColumnName("EpisodeId");
                 j.Property("CompanionsCompanionId").HasColumnName("CompanionId");
-                j.Property<Guid>("EpisodeCompanionId");
+                j.Property<int>("EpisodeCompanionId");
                 j.HasKey("EpisodeCompanionId");
             });
             base.OnModelCreating(modelBuilder);
