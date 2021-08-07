@@ -22,6 +22,16 @@ namespace DoctorWho.Db
         public DbSet<Companion> Companions { get; set; }
         public DbSet<Enemy> Enemies { get; set; }
 
+        public string GetCompanionNamesForEpisode(int episodeId)
+        {
+            throw new NotSupportedException();
+        }
+
+        public string GetEnemyNamesForEpisode(int episodeId)
+        {
+            throw new NotSupportedException();
+        }
+
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder.UseSqlServer(
@@ -49,6 +59,12 @@ namespace DoctorWho.Db
                 j.HasKey("EpisodeCompanionId");
             });
 
+            modelBuilder.HasDbFunction(typeof(DoctorWhoCoreDbContext).
+                    GetMethod(nameof(GetCompanionNamesForEpisode), new[] {typeof(int)})).HasName("fnCompanions");
+            modelBuilder.HasDbFunction(typeof(DoctorWhoCoreDbContext).
+                GetMethod(nameof(GetEnemyNamesForEpisode), new[] {typeof(int)})).HasName("fnEnemies");
+            
+            
             SeedModel(modelBuilder);
             base.OnModelCreating(modelBuilder);
         }
@@ -93,13 +109,13 @@ namespace DoctorWho.Db
                     EnemiesEnemyId = e["EnemiesEnemyId"],
                     EpisodeEnemyId = e["EpisodeEnemyId"],
                 });
-            
+
             GetJoinEntityBuilder<Enemy, Episode>(modelBuilder)
                 .UsingEntity(j => j.HasData(mappedEnemyEpisodes));
 
 
             string companionEpisodeFakeDataFilePath =
-                FakeDataGenerator.GetFilePathForJoinTypeFakes<Companion,Episode>();
+                FakeDataGenerator.GetFilePathForJoinTypeFakes<Companion, Episode>();
 
             string companionEpisodeJsonList = File.ReadAllText(companionEpisodeFakeDataFilePath);
             List<IDictionary<string, int>> companionEpisodeEntities =
@@ -112,7 +128,7 @@ namespace DoctorWho.Db
                     CompanionsCompanionId = e["CompanionsCompanionId"],
                     EpisodeCompanionId = e["EpisodeCompanionId"]
                 });
-            
+
             GetJoinEntityBuilder<Companion, Episode>(modelBuilder)
                 .UsingEntity(j => j.HasData(mappedCompanionEpisodes));
         }
