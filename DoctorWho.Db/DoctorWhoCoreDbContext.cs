@@ -21,6 +21,7 @@ namespace DoctorWho.Db
         public DbSet<Author> Authors { get; set; }
         public DbSet<Companion> Companions { get; set; }
         public DbSet<Enemy> Enemies { get; set; }
+        public DbSet<EpisodeDetails> EpisodeDetails { get; set; }
 
         public string GetCompanionNamesForEpisode(int episodeId)
         {
@@ -59,12 +60,20 @@ namespace DoctorWho.Db
                 j.HasKey("EpisodeCompanionId");
             });
 
-            modelBuilder.HasDbFunction(typeof(DoctorWhoCoreDbContext).
-                    GetMethod(nameof(GetCompanionNamesForEpisode), new[] {typeof(int)})).HasName("fnCompanions");
-            modelBuilder.HasDbFunction(typeof(DoctorWhoCoreDbContext).
-                GetMethod(nameof(GetEnemyNamesForEpisode), new[] {typeof(int)})).HasName("fnEnemies");
-            
-            
+            modelBuilder
+                .HasDbFunction(typeof(DoctorWhoCoreDbContext).GetMethod(nameof(GetCompanionNamesForEpisode),
+                    new[] {typeof(int)})).HasName("fnCompanions");
+            modelBuilder
+                .HasDbFunction(
+                    typeof(DoctorWhoCoreDbContext).GetMethod(nameof(GetEnemyNamesForEpisode), new[] {typeof(int)}))
+                .HasName("fnEnemies");
+
+            modelBuilder.Entity<EpisodeDetails>().HasNoKey().ToView("viewEpisodes");
+            modelBuilder.Entity<EpisodeDetails>().Property(ed => ed.CompanionsNames)
+                .HasColumnName("Companions");
+            modelBuilder.Entity<EpisodeDetails>().Property(ed => ed.EnemiesNames)
+                .HasColumnName("Enemies");
+
             SeedModel(modelBuilder);
             base.OnModelCreating(modelBuilder);
         }
