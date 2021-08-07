@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace DoctorWho.Db.Domain
 {
-    public class Enemy
+    public class Enemy : CRUDModel
     {
         public int EnemyId { get; set; }
         public string EnemyName { get; set; }
