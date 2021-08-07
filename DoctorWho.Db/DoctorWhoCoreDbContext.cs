@@ -23,6 +23,15 @@ namespace DoctorWho.Db
         public DbSet<Enemy> Enemies { get; set; }
         public DbSet<EpisodeDetails> EpisodeDetails { get; set; }
 
+        public DoctorWhoCoreDbContext()
+        {
+            
+        }
+        public DoctorWhoCoreDbContext(DbContextOptions options) : base(options)
+        {
+            
+        }
+        
         public string GetCompanionNamesForEpisode(int episodeId)
         {
             throw new NotSupportedException();
@@ -35,6 +44,8 @@ namespace DoctorWho.Db
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
+            if (optionsBuilder.IsConfigured) return;
+            
             optionsBuilder.UseSqlServer(
             );
             base.OnConfiguring(optionsBuilder);
