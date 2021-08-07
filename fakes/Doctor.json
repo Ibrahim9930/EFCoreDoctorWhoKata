@@ -1,6 +1,6 @@
 [{
         "DoctorId": 1,
-        "DoctorNumber": -286735926,
+        "DoctorNumber": 2,
         "DoctorName": "Michael Fadel",
         "Birthdate": "2021-08-06T08:51:47.0758532+03:00",
         "FirstEpisodeDate": "2021-08-06T16:19:34.5685415+03:00",
@@ -8,7 +8,7 @@
         "Episodes": null
     }, {
         "DoctorId": 2,
-        "DoctorNumber": 1540560863,
+        "DoctorNumber": 18,
         "DoctorName": "Ralph Weimann",
         "Birthdate": "2021-08-05T22:30:42.2312321+03:00",
         "FirstEpisodeDate": "2021-08-06T13:06:32.6055274+03:00",
@@ -16,7 +16,7 @@
         "Episodes": null
     }, {
         "DoctorId": 3,
-        "DoctorNumber": -1120918709,
+        "DoctorNumber": 9,
         "DoctorName": "Audie Mosciski",
         "Birthdate": "2021-08-06T02:35:32.2119173+03:00",
         "FirstEpisodeDate": "2021-08-06T18:34:23.6940575+03:00",
@@ -24,7 +24,7 @@
         "Episodes": null
     }, {
         "DoctorId": 4,
-        "DoctorNumber": 377547553,
+        "DoctorNumber": 7,
         "DoctorName": "Osbaldo Homenick",
         "Birthdate": "2021-08-06T16:56:49.5271792+03:00",
         "FirstEpisodeDate": "2021-08-06T14:33:55.7015825+03:00",
@@ -32,7 +32,7 @@
         "Episodes": null
     }, {
         "DoctorId": 5,
-        "DoctorNumber": 1480806104,
+        "DoctorNumber": 12,
         "DoctorName": "Darien Murazik",
         "Birthdate": "2021-08-06T07:00:11.0903591+03:00",
         "FirstEpisodeDate": "2021-08-06T11:49:44.733167+03:00",
@@ -40,7 +40,7 @@
         "Episodes": null
     }, {
         "DoctorId": 6,
-        "DoctorNumber": -692170280,
+        "DoctorNumber": 3,
         "DoctorName": "Curtis Little",
         "Birthdate": "2021-08-06T19:12:06.6173811+03:00",
         "FirstEpisodeDate": "2021-08-05T20:54:50.2926629+03:00",
@@ -48,7 +48,7 @@
         "Episodes": null
     }, {
         "DoctorId": 7,
-        "DoctorNumber": -445030219,
+        "DoctorNumber": 4,
         "DoctorName": "Easter Homenick",
         "Birthdate": "2021-08-06T05:25:54.1450661+03:00",
         "FirstEpisodeDate": "2021-08-06T14:47:43.6480178+03:00",
@@ -56,7 +56,7 @@
         "Episodes": null
     }, {
         "DoctorId": 8,
-        "DoctorNumber": -1301375156,
+        "DoctorNumber": 11,
         "DoctorName": "Darron Barton",
         "Birthdate": "2021-08-06T02:58:52.45246+03:00",
         "FirstEpisodeDate": "2021-08-06T14:55:40.5685083+03:00",
@@ -64,7 +64,7 @@
         "Episodes": null
     }, {
         "DoctorId": 9,
-        "DoctorNumber": -693625505,
+        "DoctorNumber": 5,
         "DoctorName": "Ronaldo Bayer",
         "Birthdate": "2021-08-05T22:12:57.6769865+03:00",
         "FirstEpisodeDate": "2021-08-06T17:17:38.6438583+03:00",
@@ -72,7 +72,7 @@
         "Episodes": null
     }, {
         "DoctorId": 10,
-        "DoctorNumber": -922269307,
+        "DoctorNumber": 7,
         "DoctorName": "Elyse Cassin",
         "Birthdate": "2021-08-05T21:44:06.6819525+03:00",
         "FirstEpisodeDate": "2021-08-06T18:20:53.1465166+03:00",
