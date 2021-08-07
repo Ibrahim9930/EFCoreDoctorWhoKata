@@ -9,5 +9,9 @@ namespace DoctorWho.Db.Domain
         public string EnemyName { get; set; }
         public string Description { get; set; }
         public ICollection<Episode> Episodes { get; set; }
+
+        public Enemy(DoctorWhoCoreDbContext context = null) : base(context)
+        {
+        }
     }
 }

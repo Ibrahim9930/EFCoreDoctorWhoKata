@@ -9,5 +9,9 @@ namespace DoctorWho.Db.Domain
         public string CompanionName { get; set; }
         public int WhoPlayed { get; set; }
         public ICollection<Episode> Episodes { get; set; }
+
+        public Companion(DoctorWhoCoreDbContext context = null) : base(context)
+        {
+        }
     }
 }

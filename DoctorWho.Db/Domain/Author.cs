@@ -8,5 +8,8 @@ namespace DoctorWho.Db.Domain
         public string AuthorName { get; set; }
 
 
+        public Author(DoctorWhoCoreDbContext context = null) : base(context)
+        {
+        }
     }
 }

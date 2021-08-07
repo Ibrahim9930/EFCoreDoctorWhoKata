@@ -12,5 +12,9 @@ namespace DoctorWho.Db.Domain
         public DateTime FirstEpisodeDate { get; set; }
         public DateTime LastEpisodeDate { get; set; }
         public List<Episode> Episodes { get; set; }
+
+        public Doctor(DoctorWhoCoreDbContext context = null) : base(context)
+        {
+        }
     }
 }

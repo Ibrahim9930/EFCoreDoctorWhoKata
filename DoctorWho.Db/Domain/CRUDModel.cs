@@ -4,25 +4,32 @@
 
     public class CRUDModel
     {
+        public DoctorWhoCoreDbContext Context { get; set; }
+
+        public CRUDModel(DoctorWhoCoreDbContext context)
+        {
+            if (context != null)
+                Context = context;
+            else
+                Context = new DoctorWhoCoreDbContext();
+        }
+
         public void Add()
         {
-            using var context = new DoctorWhoCoreDbContext();
-            context.Add(this);
-            context.SaveChanges();
+            Context.Add(this);
+            Context.SaveChanges();
         }
 
         public void Update()
         {
-            using var context = new DoctorWhoCoreDbContext();
-            context.Update(this);
-            context.SaveChanges();
+            Context.Update(this);
+            Context.SaveChanges();
         }
 
         public void Delete()
         {
-            using var context = new DoctorWhoCoreDbContext();
-            context.Remove(this);
-            context.SaveChanges();
+            Context.Remove(this);
+            Context.SaveChanges();
         }
     }
 }
