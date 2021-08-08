@@ -12,6 +12,7 @@ namespace DoctorWho.Db.Domain
 
         public Companion(DoctorWhoCoreDbContext context = null) : base(context)
         {
+            Episodes = new List<Episode>();
         }
     }
 }

@@ -12,6 +12,8 @@ namespace DoctorWho.Db.Domain
 
         public Enemy(DoctorWhoCoreDbContext context = null) : base(context)
         {
+            Episodes = new List<Episode>();
         }
+        
     }
 }

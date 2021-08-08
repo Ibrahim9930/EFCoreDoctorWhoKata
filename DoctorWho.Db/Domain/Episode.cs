@@ -24,6 +24,24 @@ namespace DoctorWho.Db.Domain
 
         public Episode(DoctorWhoCoreDbContext context = null) : base(context)
         {
+            Enemies = new List<Enemy>();
+            Companions = new List<Companion>();
+        }
+
+        public void AddEnemy(Enemy enemy)
+        {
+            Context.Attach(this);
+            Enemies.Add(enemy);
+            Context.ChangeTracker.DetectChanges();
+            Context.SaveChanges();
+        }
+
+        public void AddCompanion(Companion companion)
+        {
+            Context.Attach(this);
+            Companions.Add(companion);
+            Context.ChangeTracker.DetectChanges();
+            Context.SaveChanges();
         }
     }
 }
