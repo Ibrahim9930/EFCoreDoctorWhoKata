@@ -17,16 +17,17 @@ namespace DoctorWho.Tests
         private readonly DoctorWhoCoreDbContext _queryContext;
         private readonly DoctorWhoCoreDbContext _entitiesContext;
         private readonly DoctorWhoCoreDbContext _disconnectedContext;
-
-
+        
         public DoctorWhoTests()
         {
-            var optBuilder = new DbContextOptionsBuilder();
-            optBuilder.UseInMemoryDatabase("DoctorWhoTestsDB");
+            var optBuilderForSeededDb = new DbContextOptionsBuilder();
+            optBuilderForSeededDb.UseInMemoryDatabase("DoctorWhoTestsDB");
 
-            _queryContext = new DoctorWhoCoreDbContext(optBuilder.Options);
-            _entitiesContext = new DoctorWhoCoreDbContext(optBuilder.Options);
-            _disconnectedContext = new DoctorWhoCoreDbContext(optBuilder.Options);
+            var optBuilderForUnseededDb = new DbContextOptionsBuilder();
+            
+            _queryContext = new DoctorWhoCoreDbContext(optBuilderForSeededDb.Options);
+            _entitiesContext = new DoctorWhoCoreDbContext(optBuilderForSeededDb.Options);
+            _disconnectedContext = new DoctorWhoCoreDbContext(optBuilderForSeededDb.Options);
 
             _queryContext.Database.EnsureCreated();
         }
@@ -106,6 +107,84 @@ namespace DoctorWho.Tests
             episode = _disconnectedContext.Episodes.Find(1);
 
             episode.Title.Should().NotBe(newTitle);
+        }
+
+        [Fact]
+        public void GetEnemyById_EnemyExists_ShouldReturnEnemyWithRightNameAndId()
+        {
+            string enemyFakesPath = FakeDataGenerator.GetFilePathForTypeFakes<Enemy>();
+            string listJson = File.ReadAllText(enemyFakesPath);
+
+            List<Enemy> enemies = JsonSerializer.Deserialize<List<Enemy>>(listJson);
+            Enemy targetEnemy = enemies.First(e => e.EnemyId == 1);
+
+            Enemy enemy = Enemy.GetEnemyById(1, _queryContext);
+
+            using (var scope = new AssertionScope())
+            {
+                enemy.EnemyId.Should().Be(targetEnemy.EnemyId);
+                enemy.EnemyName.Should().Be(targetEnemy.EnemyName);
+            }
+        }
+
+        [Fact]
+        public void GetEnemyById_EnemyDoesntExist_ShouldReturnNull()
+        {
+            Enemy enemy = Enemy.GetEnemyById(11, _queryContext);
+
+            enemy.Should().BeNull();
+        }
+        [Fact]
+        public void GetCompanionById_CompanionExists_ShouldReturnCompanionWithRightNameAndId()
+        {
+            string companionFakesPath = FakeDataGenerator.GetFilePathForTypeFakes<Companion>();
+            string listJson = File.ReadAllText(companionFakesPath);
+
+            List<Companion> companions = JsonSerializer.Deserialize<List<Companion>>(listJson);
+            Companion targetCompanion = companions.First(e => e.CompanionId == 1);
+
+            Companion companion = Companion.GetCompanionById(1, _queryContext);
+
+            using (var scope = new AssertionScope())
+            {
+                companion.CompanionName.Should().Be(targetCompanion.CompanionName);
+                companion.CompanionId.Should().Be(targetCompanion.CompanionId);
+            }
+        }
+
+        [Fact]
+        public void GetCompanionById_CompanionDoesntExist_ShouldReturnNull()
+        {
+            Companion companion = Companion.GetCompanionById(11, _queryContext);
+
+            companion.Should().BeNull();
+        }
+        [Fact]
+        public void GetAllDoctors_StoreHasDoctors_ShouldReturnAllDoctorsWithTheRightNamesAndIds()
+        {
+            string doctorFakesPath = FakeDataGenerator.GetFilePathForTypeFakes<Doctor>();
+            string listJson = File.ReadAllText(doctorFakesPath);
+
+            List<Doctor> targetDoctors = JsonSerializer.Deserialize<List<Doctor>>(listJson);
+
+            List<Doctor> doctors = Doctor.GetAllDoctors(_queryContext).ToList();
+
+            doctors.Should().OnlyContain(
+                doc => targetDoctors
+                    .First(
+                        td => td.DoctorId == doc.DoctorId && td.DoctorName == doc.DoctorName
+                        ) != null
+                );
+        }
+        
+        [Fact]
+        public void GetAllDoctors_StoreDoesntHaveDoctors_ShouldReturnNull()
+        {
+            // _queryContext.Doctors.RemoveRange(_queryContext.Doctors);
+            //
+            // List<Doctor> doctors = Doctor.GetAllDoctors(_queryContext).ToList();
+            //
+            // doctors.Should().BeNull();
         }
     }
 }
