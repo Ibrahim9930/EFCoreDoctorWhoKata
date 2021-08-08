@@ -14,5 +14,16 @@ namespace DoctorWho.Db.Domain
         {
             Episodes = new List<Episode>();
         }
+
+        public static Companion GetCompanionById(int companionId)
+        {
+            var context = new DoctorWhoCoreDbContext();
+            return context.Companions.Find(companionId);
+        }
+        
+        public static Companion GetCompanionById(int companionId,DoctorWhoCoreDbContext context)
+        {
+            return context.Companions.Find(companionId);
+        }
     }
 }
