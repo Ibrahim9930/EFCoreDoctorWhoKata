@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace DoctorWho.Db.Domain
 {
-    public class Doctor
+    public class Doctor : CRUDModel
     {
         public int DoctorId { get; set; }
         public int DoctorNumber { get; set; }
@@ -12,5 +12,9 @@ namespace DoctorWho.Db.Domain
         public DateTime FirstEpisodeDate { get; set; }
         public DateTime LastEpisodeDate { get; set; }
         public List<Episode> Episodes { get; set; }
+
+        public Doctor(DoctorWhoCoreDbContext context = null) : base(context)
+        {
+        }
     }
 }
