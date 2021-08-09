@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace DoctorWho.Db.Domain
 {
-    public class Episode : CRUDModel
+    public class Episode
     {
         public int EpisodeId { get; set; }
         public int SeriesNumber { get; set; }
@@ -15,33 +15,17 @@ namespace DoctorWho.Db.Domain
 
         public ICollection<Enemy> Enemies { get; set; }
         public ICollection<Companion> Companions { get; set; }
-        
+
         public int AuthorId { get; set; }
         public Author Author { get; set; }
-        
+
         public int DoctorId { get; set; }
         public Doctor Doctor { get; set; }
 
-        public Episode(DoctorWhoCoreDbContext context = null) : base(context)
+        public Episode()
         {
             Enemies = new List<Enemy>();
             Companions = new List<Companion>();
-        }
-
-        public void AddEnemy(Enemy enemy)
-        {
-            Context.Attach(this);
-            Enemies.Add(enemy);
-            Context.ChangeTracker.DetectChanges();
-            Context.SaveChanges();
-        }
-
-        public void AddCompanion(Companion companion)
-        {
-            Context.Attach(this);
-            Companions.Add(companion);
-            Context.ChangeTracker.DetectChanges();
-            Context.SaveChanges();
         }
     }
 }
