@@ -13,8 +13,8 @@ namespace DoctorWho.Db.Domain
         public DateTime EpisodeDate { get; set; }
         public string Notes { get; set; }
 
-        public List<Enemy> Enemies { get; set; }
-        public List<Companion> Companions { get; set; }
+        public ICollection<Enemy> Enemies { get; set; }
+        public ICollection<Companion> Companions { get; set; }
         
         public int AuthorId { get; set; }
         public Author Author { get; set; }

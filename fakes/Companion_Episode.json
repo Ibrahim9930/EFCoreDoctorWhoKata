@@ -1,0 +1,42 @@
+[{
+        "EpisodesEpisodeId": 9,
+        "CompanionsCompanionId": 1,
+        "EpisodeCompanionId": 1
+    }, {
+        "EpisodesEpisodeId": 8,
+        "CompanionsCompanionId": 8,
+        "EpisodeCompanionId": 2
+    }, {
+        "EpisodesEpisodeId": 5,
+        "CompanionsCompanionId": 4,
+        "EpisodeCompanionId": 3
+    }, {
+        "EpisodesEpisodeId": 6,
+        "CompanionsCompanionId": 6,
+        "EpisodeCompanionId": 4
+    }, {
+        "EpisodesEpisodeId": 9,
+        "CompanionsCompanionId": 4,
+        "EpisodeCompanionId": 5
+    }, {
+        "EpisodesEpisodeId": 10,
+        "CompanionsCompanionId": 4,
+        "EpisodeCompanionId": 6
+    }, {
+        "EpisodesEpisodeId": 8,
+        "CompanionsCompanionId": 4,
+        "EpisodeCompanionId": 7
+    }, {
+        "EpisodesEpisodeId": 3,
+        "CompanionsCompanionId": 7,
+        "EpisodeCompanionId": 8
+    }, {
+        "EpisodesEpisodeId": 3,
+        "CompanionsCompanionId": 3,
+        "EpisodeCompanionId": 9
+    }, {
+        "EpisodesEpisodeId": 8,
+        "CompanionsCompanionId": 2,
+        "EpisodeCompanionId": 10
+    }
+]

@@ -1,0 +1,32 @@
+[{
+        "AuthorId": 1,
+        "AuthorName": "Ida Gibson"
+    }, {
+        "AuthorId": 2,
+        "AuthorName": "Lula Nitzsche"
+    }, {
+        "AuthorId": 3,
+        "AuthorName": "Dana Daniel"
+    }, {
+        "AuthorId": 4,
+        "AuthorName": "Lora Ernser"
+    }, {
+        "AuthorId": 5,
+        "AuthorName": "Vergie Gerhold"
+    }, {
+        "AuthorId": 6,
+        "AuthorName": "Daphney Waters"
+    }, {
+        "AuthorId": 7,
+        "AuthorName": "Bertram Bergnaum"
+    }, {
+        "AuthorId": 8,
+        "AuthorName": "Rubye Gusikowski"
+    }, {
+        "AuthorId": 9,
+        "AuthorName": "Mike Green"
+    }, {
+        "AuthorId": 10,
+        "AuthorName": "Rachelle Hayes"
+    }
+]

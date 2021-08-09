@@ -1,0 +1,52 @@
+[{
+        "CompanionId": 1,
+        "CompanionName": "Tillman Zemlak",
+        "WhoPlayed": 1,
+        "Episodes": null
+    }, {
+        "CompanionId": 2,
+        "CompanionName": "Greyson Walker",
+        "WhoPlayed": 0,
+        "Episodes": null
+    }, {
+        "CompanionId": 3,
+        "CompanionName": "Ursula Boyle",
+        "WhoPlayed": 1,
+        "Episodes": null
+    }, {
+        "CompanionId": 4,
+        "CompanionName": "Jameson Williamson",
+        "WhoPlayed": 0,
+        "Episodes": null
+    }, {
+        "CompanionId": 5,
+        "CompanionName": "Cyrus Berge",
+        "WhoPlayed": 1,
+        "Episodes": null
+    }, {
+        "CompanionId": 6,
+        "CompanionName": "Vicenta Bogan",
+        "WhoPlayed": 0,
+        "Episodes": null
+    }, {
+        "CompanionId": 7,
+        "CompanionName": "Cesar Tremblay",
+        "WhoPlayed": 1,
+        "Episodes": null
+    }, {
+        "CompanionId": 8,
+        "CompanionName": "Neha Kreiger",
+        "WhoPlayed": 0,
+        "Episodes": null
+    }, {
+        "CompanionId": 9,
+        "CompanionName": "Modesta Terry",
+        "WhoPlayed": 1,
+        "Episodes": null
+    }, {
+        "CompanionId": 10,
+        "CompanionName": "Eddie McGlynn",
+        "WhoPlayed": 0,
+        "Episodes": null
+    }
+]

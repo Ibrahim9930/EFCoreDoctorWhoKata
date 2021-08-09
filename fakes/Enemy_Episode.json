@@ -1,0 +1,42 @@
+[{
+        "EpisodesEpisodeId": 9,
+        "EnemiesEnemyId": 10,
+        "EpisodeEnemyId": 1
+    }, {
+        "EpisodesEpisodeId": 4,
+        "EnemiesEnemyId": 3,
+        "EpisodeEnemyId": 2
+    }, {
+        "EpisodesEpisodeId": 10,
+        "EnemiesEnemyId": 1,
+        "EpisodeEnemyId": 3
+    }, {
+        "EpisodesEpisodeId": 9,
+        "EnemiesEnemyId": 3,
+        "EpisodeEnemyId": 4
+    }, {
+        "EpisodesEpisodeId": 4,
+        "EnemiesEnemyId": 5,
+        "EpisodeEnemyId": 5
+    }, {
+        "EpisodesEpisodeId": 9,
+        "EnemiesEnemyId": 7,
+        "EpisodeEnemyId": 6
+    }, {
+        "EpisodesEpisodeId": 8,
+        "EnemiesEnemyId": 8,
+        "EpisodeEnemyId": 7
+    }, {
+        "EpisodesEpisodeId": 10,
+        "EnemiesEnemyId": 9,
+        "EpisodeEnemyId": 8
+    }, {
+        "EpisodesEpisodeId": 3,
+        "EnemiesEnemyId": 3,
+        "EpisodeEnemyId": 9
+    }, {
+        "EpisodesEpisodeId": 9,
+        "EnemiesEnemyId": 2,
+        "EpisodeEnemyId": 10
+    }
+]
