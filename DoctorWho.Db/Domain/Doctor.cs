@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace DoctorWho.Db.Domain
 {
-    public class Doctor : CRUDModel
+    public class Doctor
     {
         public int DoctorId { get; set; }
         public int DoctorNumber { get; set; }
@@ -11,19 +11,11 @@ namespace DoctorWho.Db.Domain
         public DateTime Birthdate { get; set; }
         public DateTime FirstEpisodeDate { get; set; }
         public DateTime LastEpisodeDate { get; set; }
-        public List<Episode> Episodes { get; set; }
+        public ICollection<Episode> Episodes { get; set; }
 
-        public Doctor(DoctorWhoCoreDbContext context = null) : base(context)
+        public Doctor()
         {
-        }
-        public static IEnumerable<Doctor> GetAllDoctors()
-        {
-            var context = new DoctorWhoCoreDbContext();
-            return context.Doctors;
-        }
-        public static IEnumerable<Doctor> GetAllDoctors(DoctorWhoCoreDbContext context)
-        {
-            return context.Doctors;
+            Episodes = new List<Episode>();
         }
     }
 }

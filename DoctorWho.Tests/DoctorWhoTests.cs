@@ -1,9 +1,8 @@
 ﻿using System.Collections.Generic;
-using System.IO;
 using System.Linq;
-using System.Text.Json;
 using DoctorWho.Db;
 using DoctorWho.Db.Domain;
+using DoctorWho.Db.Repositories;
 using DoctorWho.Db.Utilities;
 using FluentAssertions;
 using FluentAssertions.Execution;
@@ -17,34 +16,36 @@ namespace DoctorWho.Tests
         private readonly DoctorWhoCoreDbContext _queryContext;
         private readonly DoctorWhoCoreDbContext _entitiesContext;
         private readonly DoctorWhoCoreDbContext _disconnectedContext;
-        
+        private readonly IEntityReader _entityReader;
+
         public DoctorWhoTests()
         {
             var optBuilderForSeededDb = new DbContextOptionsBuilder();
             optBuilderForSeededDb.UseInMemoryDatabase("DoctorWhoTestsDB");
 
             var optBuilderForUnseededDb = new DbContextOptionsBuilder();
-            
+
             _queryContext = new DoctorWhoCoreDbContext(optBuilderForSeededDb.Options);
             _entitiesContext = new DoctorWhoCoreDbContext(optBuilderForSeededDb.Options);
             _disconnectedContext = new DoctorWhoCoreDbContext(optBuilderForSeededDb.Options);
 
             _queryContext.Database.EnsureCreated();
+
+            _entityReader = new FakeDataReaderWriter();
         }
 
 
         [Fact]
         public void AddEnemy_ShouldAddEnemyInEnemyList()
         {
+            EpisodeEFRepository episodeRepo = new EpisodeEFRepository(_queryContext);
+
             Episode episode = _queryContext.Episodes.Find(1);
             Enemy enemy = _queryContext.Enemies.Find(1);
 
-            episode.Context = _queryContext;
-            enemy.Context = _queryContext;
 
-
-            episode.AddEnemy(enemy);
-
+            episodeRepo.AddEnemy(episode, enemy);
+            episodeRepo.Commit();
 
             episode = _queryContext.Episodes
                 .Include(ep => ep.Enemies).First(ep => ep.EpisodeId == 1);
@@ -55,16 +56,17 @@ namespace DoctorWho.Tests
         [Fact]
         public void AddEnemy_ShouldNotUpdateEpisodeWhenEnemyAddedWhenUntracked()
         {
+            EpisodeEFRepository episodeRepo = new EpisodeEFRepository(_entitiesContext);
+
             Episode episode = _queryContext.Episodes.Find(1);
             Enemy enemy = _queryContext.Enemies.Find(1);
 
-            episode.Context = _entitiesContext;
-            enemy.Context = _entitiesContext;
 
             string newTitle = "new title";
             episode.Title = newTitle;
 
-            episode.AddEnemy(enemy);
+            episodeRepo.AddEnemy(episode, enemy);
+            episodeRepo.Commit();
 
             episode = _disconnectedContext.Episodes.Find(1);
 
@@ -74,14 +76,13 @@ namespace DoctorWho.Tests
         [Fact]
         public void AddCompanion_ShouldAddCompanionInCompanionList()
         {
+            EpisodeEFRepository episodeRepo = new EpisodeEFRepository(_queryContext);
+
             Episode episode = _queryContext.Episodes.Find(1);
             Companion companion = _queryContext.Companions.Find(1);
-
-            episode.Context = _queryContext;
-            companion.Context = _queryContext;
-
-
-            episode.AddCompanion(companion);
+            
+            episodeRepo.AddCompanion(episode, companion);
+            episodeRepo.Commit();
 
 
             episode = _queryContext.Episodes
@@ -93,32 +94,31 @@ namespace DoctorWho.Tests
         [Fact]
         public void AddCompanion_ShouldNotUpdateEpisodeWhenCompanionAddedWhenUntracked()
         {
+            EpisodeEFRepository episodeRepo = new EpisodeEFRepository(_entitiesContext);
+
             Episode episode = _queryContext.Episodes.Find(1);
             Companion companion = _queryContext.Companions.Find(1);
-
-            episode.Context = _entitiesContext;
-            companion.Context = _entitiesContext;
+            
 
             string newTitle = "new title";
             episode.Title = newTitle;
 
-            episode.AddCompanion(companion);
-
+            episodeRepo.AddCompanion(episode,companion);
+            episodeRepo.Commit();
+            
             episode = _disconnectedContext.Episodes.Find(1);
 
             episode.Title.Should().NotBe(newTitle);
         }
 
         [Fact]
-        public void GetEnemyById_EnemyExists_ShouldReturnEnemyWithRightNameAndId()
+        public void EnemyEFRepositoryGetById_EnemyExists_ShouldReturnEnemyWithRightNameAndId()
         {
-            string enemyFakesPath = FakeDataGenerator.GetFilePathForTypeFakes<Enemy>();
-            string listJson = File.ReadAllText(enemyFakesPath);
+            EnemyEFRepository enemyRepo = new EnemyEFRepository(_queryContext);
+            
+            Enemy targetEnemy = _entityReader.ReadFakeEntity<Enemy>(1, e => e.EnemyId);
 
-            List<Enemy> enemies = JsonSerializer.Deserialize<List<Enemy>>(listJson);
-            Enemy targetEnemy = enemies.First(e => e.EnemyId == 1);
-
-            Enemy enemy = Enemy.GetEnemyById(1, _queryContext);
+            Enemy enemy = enemyRepo.GetById(1);
 
             using (var scope = new AssertionScope())
             {
@@ -128,63 +128,29 @@ namespace DoctorWho.Tests
         }
 
         [Fact]
-        public void GetEnemyById_EnemyDoesntExist_ShouldReturnNull()
+        public void EnemyEFRepositoryGetById_EnemyDoesntExist_ShouldReturnNull()
         {
-            Enemy enemy = Enemy.GetEnemyById(11, _queryContext);
+            EnemyEFRepository enemyRepo = new EnemyEFRepository(_queryContext);
+            
+            Enemy enemy = enemyRepo.GetById(11);
 
             enemy.Should().BeNull();
         }
-        [Fact]
-        public void GetCompanionById_CompanionExists_ShouldReturnCompanionWithRightNameAndId()
-        {
-            string companionFakesPath = FakeDataGenerator.GetFilePathForTypeFakes<Companion>();
-            string listJson = File.ReadAllText(companionFakesPath);
-
-            List<Companion> companions = JsonSerializer.Deserialize<List<Companion>>(listJson);
-            Companion targetCompanion = companions.First(e => e.CompanionId == 1);
-
-            Companion companion = Companion.GetCompanionById(1, _queryContext);
-
-            using (var scope = new AssertionScope())
-            {
-                companion.CompanionName.Should().Be(targetCompanion.CompanionName);
-                companion.CompanionId.Should().Be(targetCompanion.CompanionId);
-            }
-        }
-
-        [Fact]
-        public void GetCompanionById_CompanionDoesntExist_ShouldReturnNull()
-        {
-            Companion companion = Companion.GetCompanionById(11, _queryContext);
-
-            companion.Should().BeNull();
-        }
-        [Fact]
-        public void GetAllDoctors_StoreHasDoctors_ShouldReturnAllDoctorsWithTheRightNamesAndIds()
-        {
-            string doctorFakesPath = FakeDataGenerator.GetFilePathForTypeFakes<Doctor>();
-            string listJson = File.ReadAllText(doctorFakesPath);
-
-            List<Doctor> targetDoctors = JsonSerializer.Deserialize<List<Doctor>>(listJson);
-
-            List<Doctor> doctors = Doctor.GetAllDoctors(_queryContext).ToList();
-
-            doctors.Should().OnlyContain(
-                doc => targetDoctors
-                    .First(
-                        td => td.DoctorId == doc.DoctorId && td.DoctorName == doc.DoctorName
-                        ) != null
-                );
-        }
         
         [Fact]
-        public void GetAllDoctors_StoreDoesntHaveDoctors_ShouldReturnNull()
+        public void EnemyEFRepositoryGetById_StoreHasDoctors_ShouldReturnAllDoctorsWithTheRightNamesAndIds()
         {
-            // _queryContext.Doctors.RemoveRange(_queryContext.Doctors);
-            //
-            // List<Doctor> doctors = Doctor.GetAllDoctors(_queryContext).ToList();
-            //
-            // doctors.Should().BeNull();
+            EnemyEFRepository enemyRepo = new EnemyEFRepository(_queryContext);
+            List<Enemy> targetDoctors = _entityReader.ReadAllFakeEntities<Enemy>().ToList();
+
+            List<Enemy> doctors = enemyRepo.GetAllEntities().ToList();
+
+            doctors.Should().OnlyContain(
+                en => targetDoctors
+                    .First(
+                        te => te.EnemyId == en.EnemyId && te.EnemyName == en.EnemyName
+                    ) != null
+            );
         }
     }
 }
