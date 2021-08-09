@@ -1,6 +1,7 @@
 ﻿using System.Linq;
 using DoctorWho.Db;
 using DoctorWho.Db.Domain;
+using DoctorWho.Db.Repositories;
 using FluentAssertions;
 using Microsoft.EntityFrameworkCore;
 using Xunit;
@@ -23,12 +24,16 @@ namespace DoctorWho.Tests
         public void Should_AddAuthor()
         {
             string authorName = "new author";
-            Author author = new Author(_context)
+            
+            AuthorEFRepository authorRepo = new AuthorEFRepository(_context);
+            
+            Author author = new Author()
             {
                 AuthorName = authorName
             };
             
-            author.Add();
+            authorRepo.Add(author);
+            authorRepo.Commit();
 
             _context.Authors.Where(a => a.AuthorName == authorName).Should().NotBeEmpty();
         }
@@ -36,12 +41,14 @@ namespace DoctorWho.Tests
         [Fact]
         public void Should_UpdateAuthor()
         {
+            AuthorEFRepository authorRepo = new AuthorEFRepository(_context);
             string newName = "changed name";
+
             Author author = _context.Authors.Find(1);
-            author.Context = _context;
             
             author.AuthorName = newName;
-            author.Update();
+            authorRepo.Update(author);
+            authorRepo.Commit();
 
             _context.Authors.Find(1).AuthorName.Should().Be(newName);
         }
@@ -49,10 +56,13 @@ namespace DoctorWho.Tests
         [Fact]
         public void Should_DeleteAuthor()
         {
+            AuthorEFRepository authorRepo = new AuthorEFRepository(_context);
+            string newName = "changed name";
+
             Author author = _context.Authors.Find(1);
-            author.Context = _context;
             
-            author.Delete();
+            authorRepo.Delete(author);
+            authorRepo.Commit();
 
             _context.Authors.Find(1).Should().BeNull();
         }
