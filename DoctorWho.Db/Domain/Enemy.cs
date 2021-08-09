@@ -12,6 +12,18 @@ namespace DoctorWho.Db.Domain
 
         public Enemy(DoctorWhoCoreDbContext context = null) : base(context)
         {
+            Episodes = new List<Episode>();
         }
+
+        public static Enemy GetEnemyById(int enemyId)
+        {
+            var context = new DoctorWhoCoreDbContext();
+            return context.Enemies.Find(enemyId);
+        }
+        public static Enemy GetEnemyById(int enemyId,DoctorWhoCoreDbContext context)
+        {
+            return context.Enemies.Find(enemyId);
+        }
+        
     }
 }

@@ -16,5 +16,14 @@ namespace DoctorWho.Db.Domain
         public Doctor(DoctorWhoCoreDbContext context = null) : base(context)
         {
         }
+        public static IEnumerable<Doctor> GetAllDoctors()
+        {
+            var context = new DoctorWhoCoreDbContext();
+            return context.Doctors;
+        }
+        public static IEnumerable<Doctor> GetAllDoctors(DoctorWhoCoreDbContext context)
+        {
+            return context.Doctors;
+        }
     }
 }

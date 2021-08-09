@@ -1,16 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Dynamic;
-using System.IO;
 using System.Linq;
 using System.Reflection;
 using DoctorWho.Db.Domain;
 using DoctorWho.Db.Utilities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Converters;
-using JsonSerializer = System.Text.Json.JsonSerializer;
 
 namespace DoctorWho.Db
 {
@@ -23,15 +19,28 @@ namespace DoctorWho.Db
         public DbSet<Enemy> Enemies { get; set; }
         public DbSet<EpisodeDetails> EpisodeDetails { get; set; }
 
-        public DoctorWhoCoreDbContext()
+        private IEntityReader _entityReader;
+
+        public DoctorWhoCoreDbContext(IEntityReader entityReader = null)
         {
-            
+            if (entityReader != null)
+            {
+                _entityReader = entityReader;
+                return;
+            }
+            _entityReader = new FakeDataReaderWriter();
         }
-        public DoctorWhoCoreDbContext(DbContextOptions options) : base(options)
+
+        public DoctorWhoCoreDbContext(DbContextOptions options, IEntityReader entityReader = null) : base(options)
         {
-            
+            if (entityReader != null)
+            {
+                _entityReader = entityReader;
+                return;
+            }
+            _entityReader = new FakeDataReaderWriter();
         }
-        
+
         public string GetCompanionNamesForEpisode(int episodeId)
         {
             throw new NotSupportedException();
@@ -45,7 +54,7 @@ namespace DoctorWho.Db
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             if (optionsBuilder.IsConfigured) return;
-            
+
             optionsBuilder.UseSqlServer(
             );
             base.OnConfiguring(optionsBuilder);
@@ -106,22 +115,18 @@ namespace DoctorWho.Db
 
         private void SeedEntity<T>(ModelBuilder modelBuilder) where T : class
         {
-            string fakeDataFilePath = FakeDataGenerator.GetFilePathForTypeFakes<T>();
-
-            string listJson = File.ReadAllText(fakeDataFilePath);
-            List<T> entities = JsonSerializer.Deserialize<List<T>>(listJson) ?? new List<T>();
+            List<T> entities = _entityReader.ReadAllFakeEntities<T>()?.ToList() ?? new List<T>();
 
             modelBuilder.Entity<T>().HasData(entities);
         }
 
         private void SeedJoinEntities(ModelBuilder modelBuilder)
         {
-            string enemyEpisodeFakeDataFilePath = FakeDataGenerator.GetFilePathForJoinTypeFakes<Enemy, Episode>();
-
-            string enemyEpisodeJsonList = File.ReadAllText(enemyEpisodeFakeDataFilePath);
             List<IDictionary<string, int>> enemyEpisodeEntities =
-                JsonSerializer.Deserialize<List<IDictionary<string, int>>>(enemyEpisodeJsonList) ??
+                (List<IDictionary<string, int>>) _entityReader.ReadAllFakeJoinEntities<Enemy, Episode>() ??
                 new List<IDictionary<string, int>>();
+            ;
+
             var mappedEnemyEpisodes
                 = enemyEpisodeEntities.Select(e => new
                 {
@@ -134,13 +139,10 @@ namespace DoctorWho.Db
                 .UsingEntity(j => j.HasData(mappedEnemyEpisodes));
 
 
-            string companionEpisodeFakeDataFilePath =
-                FakeDataGenerator.GetFilePathForJoinTypeFakes<Companion, Episode>();
-
-            string companionEpisodeJsonList = File.ReadAllText(companionEpisodeFakeDataFilePath);
             List<IDictionary<string, int>> companionEpisodeEntities =
-                JsonSerializer.Deserialize<List<IDictionary<string, int>>>(companionEpisodeJsonList) ??
+                (List<IDictionary<string, int>>) _entityReader.ReadAllFakeJoinEntities<Companion, Episode>() ??
                 new List<IDictionary<string, int>>();
+
             var mappedCompanionEpisodes
                 = companionEpisodeEntities.Select(e => new
                 {
