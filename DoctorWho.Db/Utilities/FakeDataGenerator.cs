@@ -1,10 +1,8 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
 using DoctorWho.Db.Domain;
-using System.Text.Json;
 using Bogus;
 
 namespace DoctorWho.Db.Utilities
@@ -14,6 +12,7 @@ namespace DoctorWho.Db.Utilities
         private const string FAKES_PATH =
             "C:\\Users\\IbrhaimMasri\\Documents\\Foothill Internship\\EF\\DoctorWho\\fakes";
 
+        private static IEntityWriter _entityWriter = new FakeDataReaderWriter();
         public static string GetFilePathForTypeFakes<T>() where T : class
         {
             return $"{FAKES_PATH}/{typeof(T).Name}.json";
@@ -43,9 +42,7 @@ namespace DoctorWho.Db.Utilities
         {
             List<T> entities = FakerGenerator.GenerateFakeList<T>(itemCount);
 
-            var output = JsonSerializer.Serialize(entities);
-
-            WriteToFile(GetFilePathForTypeFakes<T>(), output);
+            _entityWriter.WriteFakeEntities<T>(entities);
         }
 
         private static void GenerateFakeJoinEntities(int itemCount)
@@ -74,19 +71,9 @@ namespace DoctorWho.Db.Utilities
                 });
             }
 
-            WriteToFile(GetFilePathForJoinTypeFakes<Enemy, Episode>(), JsonSerializer.Serialize(episodeEnemyRelations));
-            WriteToFile(GetFilePathForJoinTypeFakes<Companion, Episode>(),
-                JsonSerializer.Serialize(episodeCompanionRelations));
+            _entityWriter.WriteFakeJoinEntities<Enemy,Episode>(episodeEnemyRelations);
+            _entityWriter.WriteFakeJoinEntities<Companion,Episode>(episodeCompanionRelations);
         }
-
-        private static void WriteToFile(string filePath, string output)
-        {
-            var fileStream = File.Create(filePath);
-            StreamWriter outputStream = new StreamWriter(fileStream);
-
-            outputStream.Write(output);
-
-            outputStream.Close();
-        }
+        
     }
 }
