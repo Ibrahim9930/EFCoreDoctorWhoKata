@@ -1,7 +1,7 @@
 [{
         "EpisodeId": 1,
-        "SeriesNumber": 230160729,
-        "EpisodeNumber": 1346876221,
+        "SeriesNumber": 1,
+        "EpisodeNumber": 2,
         "EpisodeType": "Et quia deleniti rerum odit sed voluptatem et.",
         "Title": "Eligendi voluptatem eos sit est et amet.",
         "EpisodeDate": "2021-08-06T07:09:52.3318505+03:00",
@@ -14,8 +14,8 @@
         "Doctor": null
     }, {
         "EpisodeId": 2,
-        "SeriesNumber": 989052283,
-        "EpisodeNumber": 1959599930,
+        "SeriesNumber": 5,
+        "EpisodeNumber": 12,
         "EpisodeType": "Voluptates quis saepe non.",
         "Title": "Aperiam sit nisi fugiat qui dignissimos placeat eum.",
         "EpisodeDate": "2021-08-06T15:47:57.5181174+03:00",
@@ -28,8 +28,8 @@
         "Doctor": null
     }, {
         "EpisodeId": 3,
-        "SeriesNumber": -735525617,
-        "EpisodeNumber": -553681403,
+        "SeriesNumber": 2,
+        "EpisodeNumber": 3,
         "EpisodeType": "Officiis ut ut adipisci sint.",
         "Title": "Et labore voluptatem ea.",
         "EpisodeDate": "2021-08-06T14:51:54.3762839+03:00",
@@ -42,8 +42,8 @@
         "Doctor": null
     }, {
         "EpisodeId": 4,
-        "SeriesNumber": -1060403453,
-        "EpisodeNumber": 509658734,
+        "SeriesNumber": 5,
+        "EpisodeNumber": 7,
         "EpisodeType": "Et exercitationem nihil cupiditate quis.",
         "Title": "Illum enim tempora ratione voluptatem.",
         "EpisodeDate": "2021-08-06T17:34:11.1148555+03:00",
@@ -56,8 +56,8 @@
         "Doctor": null
     }, {
         "EpisodeId": 5,
-        "SeriesNumber": -1487337585,
-        "EpisodeNumber": 2098132266,
+        "SeriesNumber": 1,
+        "EpisodeNumber": 19,
         "EpisodeType": "Libero optio quia est et omnis tenetur qui aut.",
         "Title": "Perferendis molestiae numquam amet facere.",
         "EpisodeDate": "2021-08-06T02:51:49.0357976+03:00",
@@ -70,8 +70,8 @@
         "Doctor": null
     }, {
         "EpisodeId": 6,
-        "SeriesNumber": -1252075152,
-        "EpisodeNumber": 951212442,
+        "SeriesNumber": 8,
+        "EpisodeNumber": 2,
         "EpisodeType": "Sed velit ipsa officia et consequatur dolorem sit.",
         "Title": "Vel officia nam vitae nostrum voluptas aut quo consequatur.",
         "EpisodeDate": "2021-08-06T19:16:13.2568223+03:00",
@@ -84,8 +84,8 @@
         "Doctor": null
     }, {
         "EpisodeId": 7,
-        "SeriesNumber": -40929024,
-        "EpisodeNumber": -1163249144,
+        "SeriesNumber": 20,
+        "EpisodeNumber": 1,
         "EpisodeType": "Repellat minus assumenda cupiditate aut.",
         "Title": "Non officia maiores et accusantium temporibus pariatur repellendus.",
         "EpisodeDate": "2021-08-06T09:45:36.313585+03:00",
@@ -98,8 +98,8 @@
         "Doctor": null
     }, {
         "EpisodeId": 8,
-        "SeriesNumber": -1433924172,
-        "EpisodeNumber": 1330153472,
+        "SeriesNumber": 4,
+        "EpisodeNumber": 5,
         "EpisodeType": "Est repudiandae odit omnis.",
         "Title": "Aut corporis sequi inventore voluptatibus quaerat modi est.",
         "EpisodeDate": "2021-08-06T12:25:20.6084658+03:00",
@@ -112,8 +112,8 @@
         "Doctor": null
     }, {
         "EpisodeId": 9,
-        "SeriesNumber": 1965101197,
-        "EpisodeNumber": 397635750,
+        "SeriesNumber": 8,
+        "EpisodeNumber": 9,
         "EpisodeType": "Possimus quas qui ut eum quis.",
         "Title": "Quis ad eos.",
         "EpisodeDate": "2021-08-06T06:02:38.8301547+03:00",
@@ -126,8 +126,8 @@
         "Doctor": null
     }, {
         "EpisodeId": 10,
-        "SeriesNumber": 1628809594,
-        "EpisodeNumber": -199478672,
+        "SeriesNumber": 7,
+        "EpisodeNumber": 7,
         "EpisodeType": "Quo similique culpa.",
         "Title": "Voluptate omnis fugit illo rem quis fuga assumenda.",
         "EpisodeDate": "2021-08-05T21:02:42.163204+03:00",

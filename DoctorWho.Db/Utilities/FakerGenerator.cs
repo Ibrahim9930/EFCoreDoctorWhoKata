@@ -24,7 +24,7 @@ namespace DoctorWho.Db.Utilities
                 faker
                     .RuleFor("DoctorId", f => id++)
                     .RuleFor("DoctorName", f => f.Name.FullName())
-                    .RuleFor("DoctorNumber", f => f.Random.Int())
+                    .RuleFor("DoctorNumber", f => f.PickRandom<int>(Enumerable.Range(1,20)))
                     .RuleFor("Birthdate", f => f.Date.Recent())
                     .RuleFor("FirstEpisodeDate", f => f.Date.Recent())
                     .RuleFor("LastEpisodeDate", f => f.Date.Recent());
@@ -49,8 +49,8 @@ namespace DoctorWho.Db.Utilities
                     .RuleFor("EpisodeId", f =>id++)
                     .RuleFor("Title", f => f.Lorem.Sentence())
                     .RuleFor("Notes", f => f.Lorem.Paragraphs())
-                    .RuleFor("SeriesNumber", f => f.Random.Int())
-                    .RuleFor("EpisodeNumber", f => f.Random.Int())
+                    .RuleFor("SeriesNumber", f => f.PickRandom<int>(Enumerable.Range(1,20)))
+                    .RuleFor("EpisodeNumber", f => f.PickRandom<int>(Enumerable.Range(1,20)))
                     .RuleFor("EpisodeDate", f => f.Date.Recent())
                     .RuleFor("EpisodeType", f => f.Lorem.Sentence())
                     .RuleFor("AuthorId", f => f.PickRandom(Enumerable.Range(1, itemsCount)))

@@ -4,14 +4,16 @@ using DoctorWho.Db;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace DoctorWho.Db.Migrations
 {
     [DbContext(typeof(DoctorWhoCoreDbContext))]
-    partial class DoctorWhoCoreDbContextModelSnapshot : ModelSnapshot
+    [Migration("20210806200249_add_functions")]
+    partial class add_functions
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -100,7 +102,7 @@ namespace DoctorWho.Db.Migrations
                         new
                         {
                             EpisodeCompanionId = 10,
-                            CompanionsCompanionId = 2,
+                            CompanionsCompanionId = 8,
                             EpisodesEpisodeId = 8
                         });
                 });
@@ -284,7 +286,7 @@ namespace DoctorWho.Db.Migrations
                             DoctorId = 1,
                             Birthdate = new DateTime(2021, 8, 6, 8, 51, 47, 75, DateTimeKind.Local).AddTicks(8532),
                             DoctorName = "Michael Fadel",
-                            DoctorNumber = 2,
+                            DoctorNumber = -286735926,
                             FirstEpisodeDate = new DateTime(2021, 8, 6, 16, 19, 34, 568, DateTimeKind.Local).AddTicks(5415),
                             LastEpisodeDate = new DateTime(2021, 8, 6, 15, 47, 34, 867, DateTimeKind.Local).AddTicks(8176)
                         },
@@ -293,7 +295,7 @@ namespace DoctorWho.Db.Migrations
                             DoctorId = 2,
                             Birthdate = new DateTime(2021, 8, 5, 22, 30, 42, 231, DateTimeKind.Local).AddTicks(2321),
                             DoctorName = "Ralph Weimann",
-                            DoctorNumber = 18,
+                            DoctorNumber = 1540560863,
                             FirstEpisodeDate = new DateTime(2021, 8, 6, 13, 6, 32, 605, DateTimeKind.Local).AddTicks(5274),
                             LastEpisodeDate = new DateTime(2021, 8, 5, 23, 25, 2, 32, DateTimeKind.Local).AddTicks(2241)
                         },
@@ -302,7 +304,7 @@ namespace DoctorWho.Db.Migrations
                             DoctorId = 3,
                             Birthdate = new DateTime(2021, 8, 6, 2, 35, 32, 211, DateTimeKind.Local).AddTicks(9173),
                             DoctorName = "Audie Mosciski",
-                            DoctorNumber = 9,
+                            DoctorNumber = -1120918709,
                             FirstEpisodeDate = new DateTime(2021, 8, 6, 18, 34, 23, 694, DateTimeKind.Local).AddTicks(575),
                             LastEpisodeDate = new DateTime(2021, 8, 6, 17, 50, 50, 555, DateTimeKind.Local).AddTicks(6256)
                         },
@@ -311,7 +313,7 @@ namespace DoctorWho.Db.Migrations
                             DoctorId = 4,
                             Birthdate = new DateTime(2021, 8, 6, 16, 56, 49, 527, DateTimeKind.Local).AddTicks(1792),
                             DoctorName = "Osbaldo Homenick",
-                            DoctorNumber = 7,
+                            DoctorNumber = 377547553,
                             FirstEpisodeDate = new DateTime(2021, 8, 6, 14, 33, 55, 701, DateTimeKind.Local).AddTicks(5825),
                             LastEpisodeDate = new DateTime(2021, 8, 6, 18, 57, 15, 33, DateTimeKind.Local).AddTicks(7174)
                         },
@@ -320,7 +322,7 @@ namespace DoctorWho.Db.Migrations
                             DoctorId = 5,
                             Birthdate = new DateTime(2021, 8, 6, 7, 0, 11, 90, DateTimeKind.Local).AddTicks(3591),
                             DoctorName = "Darien Murazik",
-                            DoctorNumber = 12,
+                            DoctorNumber = 1480806104,
                             FirstEpisodeDate = new DateTime(2021, 8, 6, 11, 49, 44, 733, DateTimeKind.Local).AddTicks(1670),
                             LastEpisodeDate = new DateTime(2021, 8, 6, 1, 31, 27, 695, DateTimeKind.Local).AddTicks(2999)
                         },
@@ -329,7 +331,7 @@ namespace DoctorWho.Db.Migrations
                             DoctorId = 6,
                             Birthdate = new DateTime(2021, 8, 6, 19, 12, 6, 617, DateTimeKind.Local).AddTicks(3811),
                             DoctorName = "Curtis Little",
-                            DoctorNumber = 3,
+                            DoctorNumber = -692170280,
                             FirstEpisodeDate = new DateTime(2021, 8, 5, 20, 54, 50, 292, DateTimeKind.Local).AddTicks(6629),
                             LastEpisodeDate = new DateTime(2021, 8, 6, 0, 42, 32, 538, DateTimeKind.Local).AddTicks(1788)
                         },
@@ -338,7 +340,7 @@ namespace DoctorWho.Db.Migrations
                             DoctorId = 7,
                             Birthdate = new DateTime(2021, 8, 6, 5, 25, 54, 145, DateTimeKind.Local).AddTicks(661),
                             DoctorName = "Easter Homenick",
-                            DoctorNumber = 4,
+                            DoctorNumber = -445030219,
                             FirstEpisodeDate = new DateTime(2021, 8, 6, 14, 47, 43, 648, DateTimeKind.Local).AddTicks(178),
                             LastEpisodeDate = new DateTime(2021, 8, 5, 21, 4, 59, 401, DateTimeKind.Local).AddTicks(2522)
                         },
@@ -347,7 +349,7 @@ namespace DoctorWho.Db.Migrations
                             DoctorId = 8,
                             Birthdate = new DateTime(2021, 8, 6, 2, 58, 52, 452, DateTimeKind.Local).AddTicks(4600),
                             DoctorName = "Darron Barton",
-                            DoctorNumber = 11,
+                            DoctorNumber = -1301375156,
                             FirstEpisodeDate = new DateTime(2021, 8, 6, 14, 55, 40, 568, DateTimeKind.Local).AddTicks(5083),
                             LastEpisodeDate = new DateTime(2021, 8, 5, 22, 2, 20, 20, DateTimeKind.Local).AddTicks(6155)
                         },
@@ -356,7 +358,7 @@ namespace DoctorWho.Db.Migrations
                             DoctorId = 9,
                             Birthdate = new DateTime(2021, 8, 5, 22, 12, 57, 676, DateTimeKind.Local).AddTicks(9865),
                             DoctorName = "Ronaldo Bayer",
-                            DoctorNumber = 5,
+                            DoctorNumber = -693625505,
                             FirstEpisodeDate = new DateTime(2021, 8, 6, 17, 17, 38, 643, DateTimeKind.Local).AddTicks(8583),
                             LastEpisodeDate = new DateTime(2021, 8, 6, 6, 34, 6, 370, DateTimeKind.Local).AddTicks(7573)
                         },
@@ -365,7 +367,7 @@ namespace DoctorWho.Db.Migrations
                             DoctorId = 10,
                             Birthdate = new DateTime(2021, 8, 5, 21, 44, 6, 681, DateTimeKind.Local).AddTicks(9525),
                             DoctorName = "Elyse Cassin",
-                            DoctorNumber = 7,
+                            DoctorNumber = -922269307,
                             FirstEpisodeDate = new DateTime(2021, 8, 6, 18, 20, 53, 146, DateTimeKind.Local).AddTicks(5166),
                             LastEpisodeDate = new DateTime(2021, 8, 5, 23, 28, 15, 933, DateTimeKind.Local).AddTicks(1538)
                         });
@@ -497,10 +499,10 @@ namespace DoctorWho.Db.Migrations
                             AuthorId = 4,
                             DoctorId = 9,
                             EpisodeDate = new DateTime(2021, 8, 6, 7, 9, 52, 331, DateTimeKind.Local).AddTicks(8505),
-                            EpisodeNumber = 2,
+                            EpisodeNumber = 1346876221,
                             EpisodeType = "Et quia deleniti rerum odit sed voluptatem et.",
                             Notes = "Voluptas amet labore magnam et quo. Placeat quia dolorem quisquam repudiandae ut similique. Dolor sint eveniet cum. Laudantium nam excepturi.\n\nUt reprehenderit vitae ipsa velit nisi eveniet ipsum cum. Vero molestias modi illo. Enim sed aut voluptas numquam est temporibus facere aut voluptas.\n\nExcepturi quis aperiam aspernatur cum neque iure incidunt. Cupiditate nihil voluptas deleniti dolorem quod. Iusto nemo tempore exercitationem.",
-                            SeriesNumber = 1,
+                            SeriesNumber = 230160729,
                             Title = "Eligendi voluptatem eos sit est et amet."
                         },
                         new
@@ -509,10 +511,10 @@ namespace DoctorWho.Db.Migrations
                             AuthorId = 2,
                             DoctorId = 8,
                             EpisodeDate = new DateTime(2021, 8, 6, 15, 47, 57, 518, DateTimeKind.Local).AddTicks(1174),
-                            EpisodeNumber = 12,
+                            EpisodeNumber = 1959599930,
                             EpisodeType = "Voluptates quis saepe non.",
                             Notes = "Iure hic natus voluptatem libero. Quibusdam officiis quisquam excepturi. Perspiciatis non ullam. Facere aut esse quas.\n\nOdio at qui in consequuntur voluptas praesentium voluptatem nisi. Aspernatur quia laudantium. Modi et voluptatem odio aperiam occaecati. Nam autem sed corrupti magnam quae dolorum quasi quidem.\n\nUt iusto hic explicabo reiciendis. Ut voluptas laboriosam pariatur autem atque aut laboriosam laudantium qui. Eum corrupti aut totam molestiae sunt est deleniti quae voluptates. Minima voluptas hic impedit optio assumenda nemo accusantium cupiditate.",
-                            SeriesNumber = 5,
+                            SeriesNumber = 989052283,
                             Title = "Aperiam sit nisi fugiat qui dignissimos placeat eum."
                         },
                         new
@@ -521,10 +523,10 @@ namespace DoctorWho.Db.Migrations
                             AuthorId = 7,
                             DoctorId = 4,
                             EpisodeDate = new DateTime(2021, 8, 6, 14, 51, 54, 376, DateTimeKind.Local).AddTicks(2839),
-                            EpisodeNumber = 3,
+                            EpisodeNumber = -553681403,
                             EpisodeType = "Officiis ut ut adipisci sint.",
                             Notes = "Nisi dolor et non consequatur libero natus et eveniet libero. Labore aperiam odio ullam et necessitatibus vitae architecto enim. Sit atque officia occaecati omnis dicta illo non. Iste laboriosam voluptates sit nobis ut excepturi perferendis. Incidunt harum soluta aut dolorum odit. Sed ut molestiae omnis aliquid.\n\nOfficia incidunt nesciunt eligendi doloremque. Dolore qui molestias quis consectetur fugit. Voluptas cumque possimus hic ex officiis.\n\nRerum veritatis quia et deleniti incidunt facilis id consequuntur. Ea corrupti inventore quia aspernatur cupiditate. Deleniti id voluptatem est quia qui illum molestias. Sapiente esse deserunt reiciendis voluptate deleniti vel odio. Ipsum maiores dolorem unde dolor animi nulla vel quo fugiat.",
-                            SeriesNumber = 2,
+                            SeriesNumber = -735525617,
                             Title = "Et labore voluptatem ea."
                         },
                         new
@@ -533,10 +535,10 @@ namespace DoctorWho.Db.Migrations
                             AuthorId = 1,
                             DoctorId = 7,
                             EpisodeDate = new DateTime(2021, 8, 6, 17, 34, 11, 114, DateTimeKind.Local).AddTicks(8555),
-                            EpisodeNumber = 7,
+                            EpisodeNumber = 509658734,
                             EpisodeType = "Et exercitationem nihil cupiditate quis.",
                             Notes = "Aut et autem molestiae sed eum non molestiae unde aut. Natus maiores aut enim tenetur consequatur ea soluta. Non quo et et quas et totam.\n\nAutem cumque incidunt autem tenetur excepturi assumenda harum soluta optio. Earum voluptas asperiores reprehenderit est odit. Voluptatum perspiciatis ipsam quam repellendus. Excepturi nam enim autem rerum nihil. Commodi velit occaecati quia aut sint voluptas aperiam quis quas.\n\nNam numquam officia quis. Pariatur expedita qui quaerat doloribus amet deserunt a repudiandae. Veniam quis et qui est quaerat repellendus aut quod. Qui quis quaerat nisi suscipit.",
-                            SeriesNumber = 5,
+                            SeriesNumber = -1060403453,
                             Title = "Illum enim tempora ratione voluptatem."
                         },
                         new
@@ -545,10 +547,10 @@ namespace DoctorWho.Db.Migrations
                             AuthorId = 6,
                             DoctorId = 10,
                             EpisodeDate = new DateTime(2021, 8, 6, 2, 51, 49, 35, DateTimeKind.Local).AddTicks(7976),
-                            EpisodeNumber = 19,
+                            EpisodeNumber = 2098132266,
                             EpisodeType = "Libero optio quia est et omnis tenetur qui aut.",
                             Notes = "Magni odit quidem officiis debitis aut pariatur illo. Natus in illo. Aut qui animi libero autem molestias ea asperiores illum accusamus. Incidunt eos qui qui qui id.\n\nVero qui reiciendis itaque ea velit et. Architecto et qui delectus. Ut quisquam quos officiis voluptas unde qui dolore quia possimus.\n\nUt rerum quod eum. Expedita nihil praesentium. Velit nisi ut quia et aliquam omnis commodi quis placeat. Et excepturi voluptatem esse labore at.",
-                            SeriesNumber = 1,
+                            SeriesNumber = -1487337585,
                             Title = "Perferendis molestiae numquam amet facere."
                         },
                         new
@@ -557,10 +559,10 @@ namespace DoctorWho.Db.Migrations
                             AuthorId = 8,
                             DoctorId = 2,
                             EpisodeDate = new DateTime(2021, 8, 6, 19, 16, 13, 256, DateTimeKind.Local).AddTicks(8223),
-                            EpisodeNumber = 2,
+                            EpisodeNumber = 951212442,
                             EpisodeType = "Sed velit ipsa officia et consequatur dolorem sit.",
                             Notes = "Est vel quia qui voluptatem. Quis facere quidem laudantium excepturi ut molestias. Atque ab id. Dolorem ducimus in sint corrupti. Est consectetur voluptatibus. Et autem saepe qui est commodi in reprehenderit quia.\n\nAsperiores id placeat ea nemo et aliquid sequi. Consequatur temporibus minima molestias quo ducimus recusandae quia necessitatibus quis. Architecto est est rerum voluptatem similique. Laudantium ratione quisquam sunt officiis maiores rerum quia. Est nesciunt sit ipsum exercitationem aperiam sit tenetur beatae.\n\nMaiores voluptas et consectetur quas necessitatibus. Et eum asperiores. Explicabo id quia necessitatibus aut et porro repudiandae exercitationem.",
-                            SeriesNumber = 8,
+                            SeriesNumber = -1252075152,
                             Title = "Vel officia nam vitae nostrum voluptas aut quo consequatur."
                         },
                         new
@@ -569,10 +571,10 @@ namespace DoctorWho.Db.Migrations
                             AuthorId = 4,
                             DoctorId = 6,
                             EpisodeDate = new DateTime(2021, 8, 6, 9, 45, 36, 313, DateTimeKind.Local).AddTicks(5850),
-                            EpisodeNumber = 1,
+                            EpisodeNumber = -1163249144,
                             EpisodeType = "Repellat minus assumenda cupiditate aut.",
                             Notes = "Repellat ea voluptatem est ut neque. Cupiditate quia est ratione qui autem est et sunt. Laboriosam illo molestiae iste totam facere exercitationem porro magni.\n\nQuo officiis facere et maiores voluptatem. Quibusdam sit illum. Facilis consequatur distinctio eum velit similique. Autem numquam earum blanditiis asperiores molestias. Dolores necessitatibus non est est inventore odit labore. Nobis ducimus ut est sequi.\n\nConsequuntur omnis reiciendis et voluptate natus saepe vitae. Qui voluptas suscipit quo corrupti. Debitis dolore voluptas at autem deserunt. Exercitationem possimus ipsam voluptate. Aut recusandae dignissimos et ut voluptatem error illum ut sit.",
-                            SeriesNumber = 20,
+                            SeriesNumber = -40929024,
                             Title = "Non officia maiores et accusantium temporibus pariatur repellendus."
                         },
                         new
@@ -581,10 +583,10 @@ namespace DoctorWho.Db.Migrations
                             AuthorId = 6,
                             DoctorId = 9,
                             EpisodeDate = new DateTime(2021, 8, 6, 12, 25, 20, 608, DateTimeKind.Local).AddTicks(4658),
-                            EpisodeNumber = 5,
+                            EpisodeNumber = 1330153472,
                             EpisodeType = "Est repudiandae odit omnis.",
                             Notes = "Et ratione eveniet consequatur explicabo quasi voluptatem. Atque eos distinctio dignissimos ad vel ratione quo. Accusantium perspiciatis rerum fugit tempore. Est eaque non aut quas. Rerum autem reiciendis quia perferendis architecto ullam velit consectetur. Cumque autem non illum quo inventore odio accusantium.\n\nQui sapiente velit et fugit dignissimos dolore repellendus ipsum assumenda. Sapiente facilis fugiat voluptas. Nobis sed quaerat. Pariatur nihil odit iure voluptas. Ut vero est nam animi et suscipit. Eligendi cum mollitia repudiandae non sunt dolorem.\n\nQuam voluptatum id qui. Aut facilis autem quia voluptas totam. Quisquam vero consequatur. Id ut reprehenderit dolores. Ipsum quaerat et inventore qui dolorem rem.",
-                            SeriesNumber = 4,
+                            SeriesNumber = -1433924172,
                             Title = "Aut corporis sequi inventore voluptatibus quaerat modi est."
                         },
                         new
@@ -593,10 +595,10 @@ namespace DoctorWho.Db.Migrations
                             AuthorId = 5,
                             DoctorId = 10,
                             EpisodeDate = new DateTime(2021, 8, 6, 6, 2, 38, 830, DateTimeKind.Local).AddTicks(1547),
-                            EpisodeNumber = 9,
+                            EpisodeNumber = 397635750,
                             EpisodeType = "Possimus quas qui ut eum quis.",
                             Notes = "Ut qui repellendus eligendi id doloremque iusto. Minus dolore numquam aut tempore ut. Quia id esse beatae maiores minus ut ipsum eveniet. Eum sit molestias. Modi saepe quia omnis. Ipsum ut nobis beatae corporis distinctio quae.\n\nOdio optio asperiores odit quis architecto. Soluta eos veritatis debitis temporibus molestiae est rerum in. Aut molestiae dolore excepturi ex explicabo ut eos veritatis. Quos cupiditate fugit esse earum est. Qui sed quia. Qui iusto corporis ut aperiam veritatis aut maxime.\n\nQuibusdam quas non et sed quo itaque dicta. Est delectus modi laborum suscipit sequi placeat. Itaque sit suscipit et nobis qui illo minima. Earum ut voluptatem aperiam laudantium qui. Voluptas eligendi voluptatem officia voluptas.",
-                            SeriesNumber = 8,
+                            SeriesNumber = 1965101197,
                             Title = "Quis ad eos."
                         },
                         new
@@ -605,10 +607,10 @@ namespace DoctorWho.Db.Migrations
                             AuthorId = 4,
                             DoctorId = 3,
                             EpisodeDate = new DateTime(2021, 8, 5, 21, 2, 42, 163, DateTimeKind.Local).AddTicks(2040),
-                            EpisodeNumber = 7,
+                            EpisodeNumber = -199478672,
                             EpisodeType = "Quo similique culpa.",
                             Notes = "Similique sit sunt et pariatur rerum dolores neque aut. Tenetur dolor ad. Voluptatibus ullam omnis. Ut officia aperiam et sint libero repudiandae doloribus. Delectus fugit qui velit nostrum consectetur debitis. Nostrum sit animi.\n\nMagnam quia provident fugiat est. Et doloremque quasi quia. A et vel minus tenetur nam et. Vero inventore dolorem quae corrupti repudiandae distinctio maiores in illo. Fugit quia optio rerum suscipit voluptates vitae nobis. Soluta corrupti omnis eveniet itaque et labore quos vel ratione.\n\nMinima est fugit enim vitae architecto quae. Aut et aut aut vel inventore quam voluptatem nesciunt ipsa. Accusamus voluptatibus aut enim consequatur quas enim aut est.",
-                            SeriesNumber = 7,
+                            SeriesNumber = 1628809594,
                             Title = "Voluptate omnis fugit illo rem quis fuga assumenda."
                         });
                 });
@@ -658,13 +660,13 @@ namespace DoctorWho.Db.Migrations
                         new
                         {
                             EpisodeEnemyId = 4,
-                            EnemiesEnemyId = 3,
+                            EnemiesEnemyId = 10,
                             EpisodesEpisodeId = 9
                         },
                         new
                         {
                             EpisodeEnemyId = 5,
-                            EnemiesEnemyId = 5,
+                            EnemiesEnemyId = 3,
                             EpisodesEpisodeId = 4
                         },
                         new
@@ -694,7 +696,7 @@ namespace DoctorWho.Db.Migrations
                         new
                         {
                             EpisodeEnemyId = 10,
-                            EnemiesEnemyId = 2,
+                            EnemiesEnemyId = 10,
                             EpisodesEpisodeId = 9
                         });
                 });
